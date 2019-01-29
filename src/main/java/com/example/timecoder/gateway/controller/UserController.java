@@ -1,7 +1,7 @@
 package com.example.timecoder.gateway.controller;
 
-import com.example.timecoder.gateway.payload.UserIdentityAvailability;
-import com.example.timecoder.gateway.payload.UserSummary;
+import com.example.timecoder.gateway.payload.auth.UserIdentityAvailability;
+import com.example.timecoder.gateway.payload.auth.UserSummary;
 import com.example.timecoder.gateway.repository.UserRepository;
 import com.example.timecoder.gateway.security.CurrentUser;
 import com.example.timecoder.gateway.security.UserPrincipal;

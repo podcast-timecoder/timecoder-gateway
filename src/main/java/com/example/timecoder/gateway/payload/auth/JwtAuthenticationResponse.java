@@ -1,4 +1,4 @@
-package com.example.timecoder.gateway.payload;
+package com.example.timecoder.gateway.payload.auth;
 
 /**
  * Created by rajeevkumarsingh on 19/08/17.

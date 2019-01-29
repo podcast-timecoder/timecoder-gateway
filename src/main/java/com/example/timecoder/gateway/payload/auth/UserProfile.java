@@ -1,4 +1,4 @@
-package com.example.timecoder.gateway.payload;
+package com.example.timecoder.gateway.payload.auth;
 
 import java.time.Instant;
 
