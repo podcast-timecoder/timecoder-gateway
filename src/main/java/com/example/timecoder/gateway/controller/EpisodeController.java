@@ -3,7 +3,7 @@ package com.example.timecoder.gateway.controller;
 import com.example.timecoder.gateway.proxy.TimecoderServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,9 +14,9 @@ public class EpisodeController {
     @Autowired
     TimecoderServiceProxy timecoderServiceProxy;
 
-    @PostMapping("/episodes")
+    @GetMapping("/episodes")
     @PreAuthorize("hasRole('USER')")
-    public Object createEpisode(){
+    public Object getAllEpisodes(){
         return timecoderServiceProxy.getAllEpisodes();
     }
 

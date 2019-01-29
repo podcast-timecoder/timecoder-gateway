@@ -5,10 +5,10 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>timecoder-gateway</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.4</version>
 	<packaging>jar</packaging>
 
-	<name>timecoder-gateway</name>
+	<name>spirogov/timecoder-gateway</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -107,6 +107,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>0.9.6</version>
+				<configuration>
+					<to>
+						<image>spirogov/timecoder-gateway</image>
+					</to>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
