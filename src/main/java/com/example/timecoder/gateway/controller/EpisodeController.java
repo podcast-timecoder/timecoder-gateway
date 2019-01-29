@@ -15,7 +15,7 @@ public class EpisodeController {
     private TimecoderServiceProxy timecoderServiceProxy;
 
     @GetMapping("/episodes")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("isAuthenticated()")
     public Object getAllEpisodes(){
         return timecoderServiceProxy.getAllEpisodes();
     }
