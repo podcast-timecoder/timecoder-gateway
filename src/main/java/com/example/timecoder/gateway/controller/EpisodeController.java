@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EpisodeController {
 
     @Autowired
-    TimecoderServiceProxy timecoderServiceProxy;
+    private TimecoderServiceProxy timecoderServiceProxy;
 
     @GetMapping("/episodes")
     @PreAuthorize("hasRole('USER')")
