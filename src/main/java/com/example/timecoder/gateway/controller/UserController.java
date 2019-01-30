@@ -9,10 +9,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping("/gateway")
@@ -26,7 +32,9 @@ public class UserController {
     @GetMapping("/user/me")
     @PreAuthorize("isAuthenticated()")
     public UserSummary getCurrentUser(@CurrentUser UserPrincipal currentUser) {
+        List<String> roleList = currentUser.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(toList());
         UserSummary userSummary = new UserSummary(currentUser.getId(), currentUser.getUsername(), currentUser.getName());
+        userSummary.setPriviledged(roleList.contains("USER_ADMIN"));
         return userSummary;
     }
 
