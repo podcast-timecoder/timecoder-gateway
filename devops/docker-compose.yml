@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.6
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=timecoder
+#  gateway:
+#    image: spirogov/timecoder-gateway:latest
+#    container_name: timecoder-gateway
+#    ports:
+#    - 8086:8080
+#    environment:
+#    - SPRING_PROFILES_ACTIVE=prod
+#    links:
+#    - timecoder-api
