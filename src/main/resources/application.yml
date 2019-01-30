@@ -30,6 +30,7 @@ timecoderService:
 spring:
   profiles: prod
   datasource:
+    initialization-mode: always
     username: root
     password: admin
     url: jdbc:mysql://mysql:3306/timecoder?useUnicode=yes&characterEncoding=UTF-8
