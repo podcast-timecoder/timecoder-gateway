@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @PreAuthorize("isAuthenticated()")
-@RequestMapping("/gateway")
 public class TimecoderController {
 
     @Autowired
