@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @PreAuthorize("isAuthenticated()")
@@ -45,5 +46,25 @@ public class TimecoderController {
     @RequestMapping(value = "/episodes/{id}/theme", method = RequestMethod.POST)
     public Object createTheme(@PathVariable("id") Long id, @Valid @RequestBody ThemePayload theme) {
         return timecoderServiceProxy.createTheme(id, theme);
+    }
+
+    @RequestMapping(value = "/episodes/{id}/theme/{themeId}/timestamp", method = RequestMethod.POST)
+    public Object setThemeTimestamp(@PathVariable("id") Long id, @PathVariable("themeId") Long themeId) {
+        return timecoderServiceProxy.createTimestamp(id, themeId);
+    }
+
+    @RequestMapping(value = "/theme", method = RequestMethod.POST)
+    public Object addFreeTheme(@Valid @RequestBody ThemePayload theme) {
+        return timecoderServiceProxy.addFreeTheme(theme);
+    }
+
+    @RequestMapping(value = "/theme", method = RequestMethod.GET)
+    public Object getAllThemes(@RequestParam("episode") String episode) {
+        return timecoderServiceProxy.getAllThemes(episode);
+    }
+
+    @RequestMapping(value = "/episodes/{id}", method = RequestMethod.POST)
+    public Object linkThemes(@PathVariable("id") Long id, @RequestBody List<Long> themeList) {
+        return timecoderServiceProxy.linkThemes(id, themeList);
     }
 }
