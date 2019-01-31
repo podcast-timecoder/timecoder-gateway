@@ -30,7 +30,7 @@ services:
     links:
       - timecoder-api
   gateway:
-    image: spirogov/timecoder-gateway:0.0.15
+    image: spirogov/timecoder-gateway:0.0.16
     container_name: timecoder-gateway
     depends_on:
       - mysql

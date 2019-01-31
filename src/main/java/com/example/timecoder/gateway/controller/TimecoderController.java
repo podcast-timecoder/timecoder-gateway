@@ -3,6 +3,7 @@ package com.example.timecoder.gateway.controller;
 import com.example.timecoder.gateway.payload.timecoder.EpisodePayload;
 import com.example.timecoder.gateway.payload.timecoder.ThemePayload;
 import com.example.timecoder.gateway.proxy.TimecoderServiceProxy;
+import com.example.timecoder.gateway.service.SseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,9 @@ public class TimecoderController {
 
     @Autowired
     private TimecoderServiceProxy timecoderServiceProxy;
+    @Autowired
+    private SseService sseService;
+
 
     @GetMapping("/episodes")
     public Object getAllEpisodes(){
@@ -35,22 +39,30 @@ public class TimecoderController {
 
     @PostMapping("/episodes/{id}/start")
     public Object startEpisode(@PathVariable("id") Long id) {
-        return timecoderServiceProxy.startEpisode(id);
+        Object resp = timecoderServiceProxy.startEpisode(id);
+        sseService.emitNotification("update");
+        return resp;
     }
 
     @PostMapping("/episodes/{id}/stop")
     public Object stopEpisode(@PathVariable("id") Long id) {
-        return timecoderServiceProxy.stopEpisode(id);
+        Object resp = timecoderServiceProxy.stopEpisode(id);
+        sseService.emitNotification("update");
+        return resp;
     }
 
     @RequestMapping(value = "/episodes/{id}/theme", method = RequestMethod.POST)
     public Object createTheme(@PathVariable("id") Long id, @Valid @RequestBody ThemePayload theme) {
-        return timecoderServiceProxy.createTheme(id, theme);
+        Object resp = timecoderServiceProxy.createTheme(id, theme);
+        sseService.emitNotification("update");
+        return resp;
     }
 
     @RequestMapping(value = "/episodes/{id}/theme/{themeId}/timestamp", method = RequestMethod.POST)
     public Object setThemeTimestamp(@PathVariable("id") Long id, @PathVariable("themeId") Long themeId) {
-        return timecoderServiceProxy.createTimestamp(id, themeId);
+        Object resp = timecoderServiceProxy.createTimestamp(id, themeId);
+        sseService.emitNotification("update");
+        return resp;
     }
 
     @RequestMapping(value = "/theme", method = RequestMethod.POST)
