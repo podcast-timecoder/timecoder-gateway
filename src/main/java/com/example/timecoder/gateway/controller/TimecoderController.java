@@ -22,12 +22,12 @@ public class TimecoderController {
 
 
     @GetMapping("/episodes")
-    public Object getAllEpisodes(){
+    public Object getAllEpisodes() {
         return timecoderServiceProxy.getAllEpisodes();
     }
 
     @PostMapping(value = "/episodes")
-    public Object createEpisode(@RequestBody EpisodePayload episodePayload){
+    public Object createEpisode(@RequestBody EpisodePayload episodePayload) {
         return timecoderServiceProxy.createEpisode(episodePayload);
     }
 
@@ -77,5 +77,10 @@ public class TimecoderController {
     @RequestMapping(value = "/episodes/{id}", method = RequestMethod.POST)
     public Object linkThemes(@PathVariable("id") Long id, @RequestBody List<Long> themeList) {
         return timecoderServiceProxy.linkThemes(id, themeList);
+    }
+
+    @RequestMapping(value = "/episodes/{id}/remove", method = RequestMethod.DELETE)
+    public Object deleteEpisode(@PathVariable("id") Long id) {
+        return timecoderServiceProxy.deleteEpisode(id);
     }
 }

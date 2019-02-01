@@ -1,5 +1,6 @@
 package com.example.timecoder.gateway.controller;
 
+import com.example.timecoder.gateway.model.User;
 import com.example.timecoder.gateway.payload.auth.UserIdentityAvailability;
 import com.example.timecoder.gateway.payload.auth.UserSummary;
 import com.example.timecoder.gateway.repository.UserRepository;
@@ -11,12 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -47,5 +46,11 @@ public class UserController {
     public UserIdentityAvailability checkEmailAvailability(@RequestParam(value = "email") String email) {
         Boolean isAvailable = !userRepository.existsByEmail(email);
         return new UserIdentityAvailability(isAvailable);
+    }
+
+    @GetMapping("/users/list")
+    @PreAuthorize("isAuthenticated()")
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
     }
 }

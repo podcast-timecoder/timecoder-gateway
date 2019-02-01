@@ -5,7 +5,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>timecoder-gateway</artifactId>
-	<version>0.0.23</version>
+	<version>1.5.0</version>
 	<packaging>jar</packaging>
 
 	<name>spirogov/timecoder-gateway</name>
