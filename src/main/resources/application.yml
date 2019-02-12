@@ -51,6 +51,6 @@ timecoderService:
   ribbon:
     listOfServers: http://timecoder-api:8080
 
-patronsService:
+patronService:
   ribbon:
     listOfServers: http://timecoder-patrons:8081
