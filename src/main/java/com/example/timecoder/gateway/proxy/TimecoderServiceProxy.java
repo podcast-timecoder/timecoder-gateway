@@ -44,4 +44,7 @@ public interface TimecoderServiceProxy {
 
     @RequestMapping(value = "/episodes/{id}/remove", method = RequestMethod.DELETE)
     Object deleteEpisode(@RequestParam Long id);
+
+    @RequestMapping(value = "/theme/{id}/delete", method = RequestMethod.DELETE)
+    Object deleteTheme(@RequestParam Long id);
 }

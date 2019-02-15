@@ -83,4 +83,10 @@ public class TimecoderController {
     public Object deleteEpisode(@PathVariable("id") Long id) {
         return timecoderServiceProxy.deleteEpisode(id);
     }
+
+    @RequestMapping(value = "/theme/{id}/delete", method = RequestMethod.DELETE)
+    public Object deleteFreeTheme(@PathVariable("id") Long id) {
+        return timecoderServiceProxy.deleteTheme(id);
+    }
+
 }
