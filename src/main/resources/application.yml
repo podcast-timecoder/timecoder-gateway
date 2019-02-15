@@ -26,6 +26,10 @@ timecoderService:
   ribbon:
     listOfServers: http://localhost:8080
 
+patronService:
+  ribbon:
+    listOfServers: localhost:8081
+
 ---
 spring:
   profiles: prod
@@ -46,3 +50,7 @@ app:
 timecoderService:
   ribbon:
     listOfServers: http://timecoder-api:8080
+
+patronService:
+  ribbon:
+    listOfServers: http://timecoder-patrons:8081

@@ -5,14 +5,12 @@ import com.example.timecoder.gateway.payload.timecoder.ThemePayload;
 import com.example.timecoder.gateway.proxy.TimecoderServiceProxy;
 import com.example.timecoder.gateway.service.SseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@PreAuthorize("isAuthenticated()")
 public class TimecoderController {
 
     @Autowired
@@ -64,7 +62,7 @@ public class TimecoderController {
         return resp;
     }
 
-    @RequestMapping(value = "/theme", method = RequestMethod.POST)
+    @RequestMapping(value = "/free-theme", method = RequestMethod.POST)
     public Object addFreeTheme(@Valid @RequestBody ThemePayload theme) {
         return timecoderServiceProxy.addFreeTheme(theme);
     }

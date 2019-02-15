@@ -5,7 +5,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>timecoder-gateway</artifactId>
-	<version>1.5.0</version>
+	<version>latest</version>
 	<packaging>jar</packaging>
 
 	<name>spirogov/timecoder-gateway</name>
@@ -23,6 +23,13 @@
 		<java.version>1.8</java.version>
 		<jjwt.version>0.9.0</jjwt.version>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>jcenter</id>
+			<url>https://jcenter.bintray.com/</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<dependency>
