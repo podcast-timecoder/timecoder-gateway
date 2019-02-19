@@ -1,6 +1,7 @@
 package com.example.timecoder.gateway.controller;
 
 import com.example.timecoder.gateway.proxy.TimecoderServiceProxy;
+import com.example.timecoder.gateway.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,9 @@ public class PostController {
     @Autowired
     private TimecoderServiceProxy timecoderServiceProxy;
 
+    @Autowired
+    private PostService postService;
+
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public Object getAllPosts() {
         return timecoderServiceProxy.getAllPosts();
@@ -18,7 +22,7 @@ public class PostController {
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
     public Object getPostById(@PathVariable("id") Long id) {
-        return timecoderServiceProxy.getPostById(id);
+        return postService.getPostById(id);
     }
 
     @RequestMapping(value = "/posts", method = RequestMethod.POST)

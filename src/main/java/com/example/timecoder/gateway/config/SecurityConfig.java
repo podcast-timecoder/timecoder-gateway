@@ -90,7 +90,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/gateway/auth/**", "/stream")
                 .permitAll()
                 .antMatchers("/free-theme").permitAll()
-                .antMatchers(HttpMethod.GET, "/posts", "/patrons", "/posts/**", "/episodes/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/posts/**").permitAll()
                 .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
                 .permitAll()
                 .antMatchers(HttpMethod.GET, "/api/users/**")
