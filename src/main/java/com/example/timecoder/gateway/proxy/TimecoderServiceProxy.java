@@ -47,4 +47,19 @@ public interface TimecoderServiceProxy {
 
     @RequestMapping(value = "/theme/{id}/delete", method = RequestMethod.DELETE)
     Object deleteTheme(@RequestParam Long id);
+
+    @RequestMapping(value = "/posts", method = RequestMethod.GET)
+    Object getAllPosts();
+
+    @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
+    Object getPostById(@RequestParam Long id);
+
+    @RequestMapping(value = "/posts", method = RequestMethod.POST)
+    Object createPost(Object post);
+
+    @RequestMapping(value = "/posts/{id}", method = RequestMethod.DELETE)
+    Object deletePost(@RequestParam Long id);
+
+    @RequestMapping(value = "/posts/{id}", method = RequestMethod.PUT)
+    Object updatePost(@RequestParam Long id, Object post);
 }
