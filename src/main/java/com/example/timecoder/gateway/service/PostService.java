@@ -21,9 +21,16 @@ public class PostService {
 
     public PostDto getPostById(Long id) {
         ObjectMapper mapper = new ObjectMapper();
-        Post post = mapper.convertValue(timecoderServiceProxy.getPostById(id), Post.class);
-        Object episode = timecoderServiceProxy.getEpisodeById(post.getEpisodeId());
-        Object patronsList = patronsServiceProxy.getAllActivePatrons();
+        Post post = null;
+        Object episode = null;
+        Object patronsList = null;
+        try {
+            post = mapper.convertValue(timecoderServiceProxy.getPostById(id), Post.class);
+            episode = timecoderServiceProxy.getEpisodeById(post.getEpisodeId());
+            patronsList = patronsServiceProxy.getAllActivePatrons();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return new PostDto(post, episode, patronsList);
     }
