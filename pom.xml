@@ -121,7 +121,22 @@
 			<plugin>
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>jib-maven-plugin</artifactId>
-				<version>0.9.6</version>
+				<version>1.0.0</version>
+				<configuration>
+					<from>
+						<image>openjdk:8-slim</image>
+					</from>
+					<container>
+						<jvmFlags>
+							<jvmFlag>-javaagent:/jacocoagent.jar=port=36320,output=tcpserver,address=0.0.0.0</jvmFlag>
+						</jvmFlags>
+						<ports>
+							<port>8080</port>
+							<port>36320</port>
+						</ports>
+					</container>
+					<extraDirectory>${project.basedir}/jib/jacoco/</extraDirectory>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
