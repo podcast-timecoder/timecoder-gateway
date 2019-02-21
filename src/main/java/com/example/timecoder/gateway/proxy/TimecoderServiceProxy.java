@@ -1,5 +1,6 @@
 package com.example.timecoder.gateway.proxy;
 
+import com.example.timecoder.gateway.model.Post;
 import com.example.timecoder.gateway.payload.timecoder.EpisodePayload;
 import com.example.timecoder.gateway.payload.timecoder.ThemePayload;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -49,17 +50,17 @@ public interface TimecoderServiceProxy {
     Object deleteTheme(@RequestParam Long id);
 
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
-    Object getAllPosts();
+    List<Post> getAllPosts();
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
-    Object getPostById(@RequestParam Long id);
+    Post getPostById(@RequestParam Long id);
 
     @RequestMapping(value = "/posts", method = RequestMethod.POST)
-    Object createPost(Object post);
+    Object createPost(Post post);
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.DELETE)
     Object deletePost(@RequestParam Long id);
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.PUT)
-    Object updatePost(@RequestParam Long id, Object post);
+    Object updatePost(@RequestParam Long id, Post post);
 }
