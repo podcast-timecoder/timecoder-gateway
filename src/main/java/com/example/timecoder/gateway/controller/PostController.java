@@ -1,14 +1,12 @@
 package com.example.timecoder.gateway.controller;
 
-import com.example.timecoder.gateway.Page;
+import com.example.timecoder.gateway.util.Page;
 import com.example.timecoder.gateway.model.Post;
 import com.example.timecoder.gateway.model.PostDto;
 import com.example.timecoder.gateway.proxy.TimecoderServiceProxy;
 import com.example.timecoder.gateway.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController

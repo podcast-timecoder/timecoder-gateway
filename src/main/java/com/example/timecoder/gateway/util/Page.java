@@ -1,4 +1,4 @@
-package com.example.timecoder.gateway;
+package com.example.timecoder.gateway.util;
 
 import io.swagger.annotations.ApiModelProperty;
 import jdk.nashorn.internal.objects.annotations.Getter;
