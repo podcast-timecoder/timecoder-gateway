@@ -4,7 +4,10 @@ import com.example.timecoder.gateway.Page;
 import com.example.timecoder.gateway.model.Post;
 import com.example.timecoder.gateway.payload.timecoder.EpisodePayload;
 import com.example.timecoder.gateway.payload.timecoder.ThemePayload;
+import feign.Param;
+import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,7 +54,10 @@ public interface TimecoderServiceProxy {
     Object deleteTheme(@RequestParam Long id);
 
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
-    List<Post> getAllPosts(Page page);
+    Object getAllPosts(@RequestParam("orderBy") String orderBy,
+                       @RequestParam("pageNumber") int pageNumber,
+                       @RequestParam("pageSize") int pageSize,
+                       @RequestParam("sortBy") String sortBy);
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
     Post getPostById(@RequestParam Long id);

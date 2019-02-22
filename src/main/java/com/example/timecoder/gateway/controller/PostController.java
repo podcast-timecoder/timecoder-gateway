@@ -21,8 +21,11 @@ public class PostController {
     private PostService postService;
 
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
-    public List<Post> getAllPosts(Page page) {
-        return timecoderServiceProxy.getAllPosts(page);
+    public Object getAllPosts(Page page) {
+        return timecoderServiceProxy.getAllPosts(page.getOrderBy().name(),
+                page.getPageNumber(),
+                page.getPageSize(),
+                page.getSortBy());
     }
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
