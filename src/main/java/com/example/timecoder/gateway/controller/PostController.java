@@ -1,5 +1,6 @@
 package com.example.timecoder.gateway.controller;
 
+import com.example.timecoder.gateway.Page;
 import com.example.timecoder.gateway.model.Post;
 import com.example.timecoder.gateway.model.PostDto;
 import com.example.timecoder.gateway.proxy.TimecoderServiceProxy;
@@ -20,8 +21,8 @@ public class PostController {
     private PostService postService;
 
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
-    public List<Post> getAllPosts() {
-        return timecoderServiceProxy.getAllPosts();
+    public List<Post> getAllPosts(Page page) {
+        return timecoderServiceProxy.getAllPosts(page);
     }
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)

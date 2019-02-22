@@ -1,5 +1,6 @@
 package com.example.timecoder.gateway.proxy;
 
+import com.example.timecoder.gateway.Page;
 import com.example.timecoder.gateway.model.Post;
 import com.example.timecoder.gateway.payload.timecoder.EpisodePayload;
 import com.example.timecoder.gateway.payload.timecoder.ThemePayload;
@@ -50,7 +51,7 @@ public interface TimecoderServiceProxy {
     Object deleteTheme(@RequestParam Long id);
 
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
-    List<Post> getAllPosts();
+    List<Post> getAllPosts(Page page);
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
     Post getPostById(@RequestParam Long id);
