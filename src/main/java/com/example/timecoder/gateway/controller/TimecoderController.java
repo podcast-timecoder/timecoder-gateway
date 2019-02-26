@@ -77,6 +77,11 @@ public class TimecoderController {
         return timecoderServiceProxy.linkThemes(id, themeList);
     }
 
+    @RequestMapping(value = "/episodes/{id}/theme/{themeId}/unlink", method = RequestMethod.POST)
+    public Object unlinkThemes(@PathVariable("id") Long id, @PathVariable("themeId") Long themeId) {
+        return timecoderServiceProxy.unlinkThemes(id, themeId);
+    }
+
     @RequestMapping(value = "/episodes/{id}/remove", method = RequestMethod.DELETE)
     public Object deleteEpisode(@PathVariable("id") Long id) {
         return timecoderServiceProxy.deleteEpisode(id);
