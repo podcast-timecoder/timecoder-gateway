@@ -1,6 +1,5 @@
 package com.example.timecoder.gateway.controller;
 
-import com.example.timecoder.gateway.model.ThemeDto;
 import com.example.timecoder.gateway.payload.timecoder.EpisodePayload;
 import com.example.timecoder.gateway.payload.timecoder.ThemePayload;
 import com.example.timecoder.gateway.proxy.TimecoderServiceProxy;
@@ -78,9 +77,9 @@ public class TimecoderController {
         return timecoderServiceProxy.linkThemes(id, themeList);
     }
 
-    @RequestMapping(value = "/episodes/{id}/unlink", method = RequestMethod.POST)
-    public Object unlinkThemes(@PathVariable("id") Long id, @RequestBody ThemeDto theme) {
-        return timecoderServiceProxy.unlinkThemes(id, theme);
+    @RequestMapping(value = "/episodes/{id}/theme/{themeId}/unlink", method = RequestMethod.POST)
+    public Object unlinkThemes(@PathVariable("id") Long id, @PathVariable("themeId") Long themeId) {
+        return timecoderServiceProxy.unlinkThemes(id, themeId);
     }
 
     @RequestMapping(value = "/episodes/{id}/remove", method = RequestMethod.DELETE)

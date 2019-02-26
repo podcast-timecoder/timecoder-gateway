@@ -1,10 +1,10 @@
 package com.example.timecoder.gateway.proxy;
 
 import com.example.timecoder.gateway.model.Post;
-import com.example.timecoder.gateway.model.ThemeDto;
 import com.example.timecoder.gateway.payload.timecoder.EpisodePayload;
 import com.example.timecoder.gateway.payload.timecoder.ThemePayload;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,8 +44,8 @@ public interface TimecoderServiceProxy {
     @RequestMapping(value = "/episodes/{id}", method = RequestMethod.POST)
     Object linkThemes(@RequestParam Long id, List<Long> themeList);
 
-    @RequestMapping(value = "/episodes/{id}/unlink", method = RequestMethod.POST)
-    Object unlinkThemes(@RequestParam Long id, ThemeDto themeDto);
+    @RequestMapping(value = "/episodes/{id}/theme/{themeId}/unlink", method = RequestMethod.POST)
+    Object unlinkThemes(@RequestParam Long id, @RequestParam Long themeId);
 
     @RequestMapping(value = "/episodes/{id}/remove", method = RequestMethod.DELETE)
     Object deleteEpisode(@RequestParam Long id);
