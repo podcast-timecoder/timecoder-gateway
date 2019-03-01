@@ -87,4 +87,8 @@ public class TimecoderController {
         return timecoderServiceProxy.deleteTheme(id);
     }
 
+    @RequestMapping(value = "/theme/{id}/update", method = RequestMethod.PUT)
+    public Object updateTheme(@PathVariable("id") Long id, @RequestBody ThemePayload themePayload){
+        return timecoderServiceProxy.updateTheme(id, themePayload);
+    }
 }

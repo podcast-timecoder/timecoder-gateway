@@ -66,4 +66,7 @@ public interface TimecoderServiceProxy {
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.PUT)
     Object updatePost(@RequestParam Long id, Post post);
+
+    @RequestMapping(value = "/theme/{id}/update", method = RequestMethod.PUT)
+    Object updateTheme(@RequestParam Long id, ThemePayload themePayload);
 }
