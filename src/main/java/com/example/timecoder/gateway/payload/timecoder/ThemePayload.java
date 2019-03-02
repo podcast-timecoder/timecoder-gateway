@@ -8,6 +8,16 @@ public class ThemePayload {
 
     @JsonProperty
     private String title;
+    @JsonProperty
+    private String timecode;
+
+    public String getTimecode() {
+        return timecode;
+    }
+
+    public void setTimecode(String timecode) {
+        this.timecode = timecode;
+    }
 
     public String getTitle() {
         return title;
