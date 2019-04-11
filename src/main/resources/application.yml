@@ -10,13 +10,18 @@ spring:
   profiles: dev
   datasource:
     initialization-mode: always
-    username: root
+    username: postgres
     password: admin
-    url: jdbc:mysql://localhost:3306/timecoder?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+    url: jdbc:postgresql://localhost:5432/timecoder
   jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
     hibernate:
       ddl-auto: update
-    database: mysql
     
 app:
   jwtSecret: JWTSuperSecretKey
@@ -35,13 +40,18 @@ spring:
   profiles: prod
   datasource:
     initialization-mode: always
-    username: root
+    username: postgres
     password: admin
-    url: jdbc:mysql://mysql:3306/timecoder?useUnicode=yes&characterEncoding=UTF-8
+    url: jdbc:postgresql://postgresql:5432/timecoder
   jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
     hibernate:
       ddl-auto: update
-    database: mysql
 
 app:
   jwtSecret: JWTSuperSecretKey

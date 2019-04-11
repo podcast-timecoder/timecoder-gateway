@@ -1,7 +1,4 @@
-TRUNCATE TABLE roles;
-
-INSERT INTO roles(name) VALUES('ROLE_USER');
-INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+TRUNCATE TABLE user_roles CASCADE;
 
 DELETE FROM users
 WHERE username in ('default_demo', 'QAGuild');
@@ -13,7 +10,7 @@ insert into users (
     id,
     email,
     name,
-    `password`,
+    password,
     username)
 values (
     1,
@@ -26,7 +23,7 @@ insert into users (
     id,
     email,
     name,
-    `password`,
+    password,
     username)
 values (
     2,
