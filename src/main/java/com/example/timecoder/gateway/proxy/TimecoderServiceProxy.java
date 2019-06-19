@@ -1,8 +1,10 @@
 package com.example.timecoder.gateway.proxy;
 
+import com.example.timecoder.gateway.model.Post;
 import com.example.timecoder.gateway.payload.timecoder.EpisodePayload;
 import com.example.timecoder.gateway.payload.timecoder.ThemePayload;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,9 +44,33 @@ public interface TimecoderServiceProxy {
     @RequestMapping(value = "/episodes/{id}", method = RequestMethod.POST)
     Object linkThemes(@RequestParam Long id, List<Long> themeList);
 
+    @RequestMapping(value = "/episodes/{id}/theme/{themeId}/unlink", method = RequestMethod.POST)
+    Object unlinkThemes(@RequestParam Long id, @RequestParam Long themeId);
+
     @RequestMapping(value = "/episodes/{id}/remove", method = RequestMethod.DELETE)
     Object deleteEpisode(@RequestParam Long id);
 
     @RequestMapping(value = "/theme/{id}/delete", method = RequestMethod.DELETE)
     Object deleteTheme(@RequestParam Long id);
+
+    @RequestMapping(value = "/posts", method = RequestMethod.GET)
+    Object getAllPosts(@RequestParam("orderBy") String orderBy,
+                       @RequestParam("pageNumber") int pageNumber,
+                       @RequestParam("pageSize") int pageSize,
+                       @RequestParam("sortBy") String sortBy);
+
+    @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
+    Post getPostById(@RequestParam Long id);
+
+    @RequestMapping(value = "/posts", method = RequestMethod.POST)
+    Object createPost(Post post);
+
+    @RequestMapping(value = "/posts/{id}", method = RequestMethod.DELETE)
+    Object deletePost(@RequestParam Long id);
+
+    @RequestMapping(value = "/posts/{id}", method = RequestMethod.PUT)
+    Object updatePost(@RequestParam Long id, Post post);
+
+    @RequestMapping(value = "/theme/{id}/update", method = RequestMethod.PUT)
+    Object updateTheme(@RequestParam Long id, ThemePayload themePayload);
 }
