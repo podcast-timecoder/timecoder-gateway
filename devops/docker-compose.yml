@@ -43,3 +43,14 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     links:
       - timecoder-api
+  inspector:
+    image: spirogov/inspector:latest
+    container_name: inspector
+    ports:
+      - 8088:8080
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - HOSTS=timecoder-api:36321, timecoder-gateway:36321
+      - DEST_FOLDER=coverage
+    volumes:
+      - "/home/sergey/Github/timecoder-gateway/coverage:/coverage"
