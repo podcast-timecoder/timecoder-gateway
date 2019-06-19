@@ -135,7 +135,7 @@
 						</jvmFlags>
 						<ports>
 							<port>8080</port>
-							<port>36320</port>
+							<port>36321</port>
 						</ports>
 					</container>
 					<extraDirectory>${project.basedir}/jib/jacoco/</extraDirectory>

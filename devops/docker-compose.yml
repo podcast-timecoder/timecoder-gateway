@@ -16,6 +16,8 @@ services:
     container_name: timecoder
     depends_on:
       - mysql
+    ports:
+      - 36322:36321
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     links:
