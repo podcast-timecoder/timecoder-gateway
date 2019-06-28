@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.6
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=timecoder
+  gateway:
+    build: ./gateway
+    image: timecoder-gateway-test:latest
+    container_name: timecoder-gateway-test
+    depends_on:
+      - mysql
+    ports:
+      - 8086:5000
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+  inspector:
+    image: spirogov/inspector:latest
+    container_name: inspector
+    ports:
+      - 8088:8080
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - HOSTS=timecoder-gateway-test:36321
+      - DEST_FOLDER=coverage
+    volumes:
+      - "/home/sergey/Github/timecoder-gateway/coverage:/coverage"
