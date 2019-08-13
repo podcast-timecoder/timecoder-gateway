@@ -1,8 +1,6 @@
 package com.example.timecoder.gateway.util;
 
 import io.swagger.annotations.ApiModelProperty;
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
 import org.springframework.data.domain.Sort;
 
 public class Page {
