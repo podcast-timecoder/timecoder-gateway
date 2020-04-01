@@ -1,3 +1,5 @@
+#demo123
+
 TRUNCATE TABLE roles;
 
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
@@ -19,7 +21,7 @@ values (
     1,
     'admin@ukr.net',
     'admin',
-    '$2a$10$2zCaORIrNiVpFYRzs7/PTO3FVjx8nWrVbzjesNnHqxLhOSkPpfsAW', # demo123
+    '$2a$10$2zCaORIrNiVpFYRzs7/PTO3FVjx8nWrVbzjesNnHqxLhOSkPpfsAW',
     'admin');
 
 insert into user_roles (role_id, user_id) values (1, 1);
