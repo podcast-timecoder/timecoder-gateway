@@ -1,17 +1,14 @@
-#demo123
+--demo123
 
 TRUNCATE TABLE roles;
 
-INSERT INTO roles(name) VALUES('ROLE_ADMIN');
-INSERT INTO roles(name) VALUES('ROLE_USER');
-
-DELETE FROM users
-WHERE username in ('QAGuild');
+INSERT IGNORE INTO roles(name) VALUES('ROLE_ADMIN');
+INSERT IGNORE INTO roles(name) VALUES('ROLE_USER');
 
 DELETE FROM user_roles
 WHERE user_id IN (1);
 
-insert into users (
+insert IGNORE into users (
     id,
     email,
     name,
