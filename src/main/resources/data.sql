@@ -18,7 +18,7 @@ values (
     1,
     'admin@ukr.net',
     'admin',
-    '$2a$10$LxEsIfZSh.tX7N.Bthv0wuINJjMpnpVyuDXxuljHDhPejz96Ms.k.',
+    '$2a$10$7Bjjd8Dhblu5nL4dzOTH.ujl4bovy0cWQC09kFApjsFxLHbwGyT9m',
     'admin');
 
 insert into user_roles (role_id, user_id) values (1, 1);
