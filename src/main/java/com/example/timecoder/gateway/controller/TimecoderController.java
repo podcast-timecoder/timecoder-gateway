@@ -111,6 +111,14 @@ public class TimecoderController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "Authorization token",
                     required = true, dataType = "string", paramType = "header")})
+    @RequestMapping(value = "/episodes/{id}/guest", method = RequestMethod.POST)
+    public Object addEpisodeGuest(@PathVariable("id") Long id, @RequestBody String name) {
+        return timecoderServiceProxy.addEpisodeGuest(id, name);
+    }
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "Authorization token",
+                    required = true, dataType = "string", paramType = "header")})
     @RequestMapping(value = "/episodes/{id}/theme/{themeId}/unlink", method = RequestMethod.POST)
     public Object unlinkThemes(@PathVariable("id") Long id, @PathVariable("themeId") Long themeId) {
         return timecoderServiceProxy.unlinkThemes(id, themeId);
